@@ -1,0 +1,10 @@
+
+* TODO Normal mapping int TBN space
+* DONE Clean up SMController (its own file, etc)
+* DONE Render text
+* DONE Scene parameters. Boost any?
+** Maybe I can do inheritance, or similar... They wrap they type, implement ostream if necessary. All in a file
+* DONE Clean up Camera class
+* TODO Think about Body and object for a bit
+** Integrate lights?
+
