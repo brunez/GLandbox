@@ -7,8 +7,6 @@ OpenGL project. It is maybe too early even for a quick pull and test. It is neit
 ##Examples
 In the examples directory you will find a bunch of examples that make use of the framework. Some of them are based on the 6th edition of the excellent OpenGL SuperBible. Some of these examples are not yet fully functional or present some issues, but they can provide quick pointers on how to use the API.
 
-[TOC]
-
 ## Dependencies
 ### libpng
 
@@ -22,5 +20,7 @@ In the examples directory you will find a bunch of examples that make use of the
 
     https://github.com/syoyo/tinyobjloader
 
-### glfw
+### glfw3
+
+    http://www.glfw.org/
 
