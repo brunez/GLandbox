@@ -1,0 +1,10 @@
+# Filetypes:
+*#*
+*~*
+*.html
+*.orig
+*.log
+TAGS
+
+doc/doxygen_doc
+build
