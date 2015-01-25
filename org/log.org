@@ -1,22 +1,22 @@
 
-* August 10, 2014
+* 08/10/2014
 - Put sea example into a different file
   - Glitches
     - Not fixed by deleting buffer objects and array objects at the end of the program
     - FIXED: GLEntity::getVertexCount() was wrong. I was returning the number of float values instead of the number of vertices.
 
 
-* August 14, 2014
+* 08/14/2014
 - Specular reflection on Phong shader appears also on the rear of the object with respect to the light source
   - FIXED: http://stackoverflow.com/questions/20008089/specular-lighting-appears-on-both-eye-facing-and-rear-sides-of-object
 
 
 
-* August 15, 2014
+* 08/15/2014
 - Noticed that objects flatten as they approach the sides of the screen
   - IMPROVED: Changing the FOV from 67 to 45 vastly improved the problem. At 90 it's at its worst. Near 0 it's best, but the camera behaves weirdly, as if zoomed in.
   - REMARK: FOV can be used for a zoom effect
-* August 16, 2014
+* 08/16/2014
 - Why does the author use normals and lights in eye space? It seems a waste...
   - REMARK: I've noticed a possible reason. The model-view matrix is the same for all vertices on each frame, so calculating it in the shader is a waste. Because of this, what enters the shader is the model-view matrix, so you cannot calculate the transformation for the normals separately from their representation in view space. This is consistent with the fact that, traditionally, OpenGL handles MODELVIEW and PROJECTION matrices. It does not separate model from view. I guess that MODELVIEW was calculated from gl{Translate|Rotate|Scale} and glLookAt.
   - BUT!: View matrix is also passed around, though not used...
@@ -25,13 +25,13 @@
 
 
 
-* August 18, 2014
+* 08/18/2014
 - Again noticed a problem with lighting. As I move away from the object, the light seems to be more and more aligned with the viewer axis.
   - FIXED: I was reducing the view matrix to its 3x3 submatrix, thus losing the position information. Therefore, the rotation of the camera was being taken into account for expressing the light position in view space, but not the camera position. The solution is, of course, to extend the vectors with a w component of value 1.0.
 
 
 
-* August 27, 2014
+* 08/27/2014
 - PROBLEM: Shadow maps do not render
   - FIXED: I wasn't multiplying the shadow matrix by the model matrix of each object.
 - Additional problems: 
@@ -45,7 +45,7 @@
     - Needed a VAO for anything to render (why??? why is a buffer not enough?)
 
 
-* August 28, 2014
+* 08/28/2014
 - PROBLEM: Can't properly calculate the position of right-margin text
   - FIXED: glyph slot advance was the right metric, but I had to shift its bits 6 positions to the right. 26 bit value?
     - TODO: Is it device-dependent?
@@ -53,6 +53,20 @@
     - HEADWRAP: So, the thing is, freetype glyph metrics are represented with 26.6 values - 6 bits for the fractional part. That is, the smallest distance (the unit) is 00000000 00000000 00000000 00.000001, i.e., 1/64 of a pixel. That's why distances must be multiples of 64 if you want to represent pixels. Or something.
 
 
-* August 31, 2014
+* 08/31/2014
 - PROBLEM: EnvMaps texture won't get drawn
   - FIXED: Had to call glActiveTexture() before creating it. Never take anything for granted!
+
+* 01/25/2015 
+- PROBLEM: compiler can't find ftglyph.h
+  - FIXED: I had originally included that using Ubuntu 14.04, but this
+    error surfaced on 12.04. The version of freetype in the latter was
+    an older one. Apparently, in recent versions of freetype, headers
+    are stored in /usr/include/freetype2, whereas in older versions they
+    were in /usr/include/freetype2/freetype. I added
+    -I/usr/include/freetype2/freetype to the flags in CMakeLists.txt
+    so that #include <ftglyph.h> works with both versions.
+- PROBLEM: undefined reference to `__glewTexStorage2D'
+  - CAUSE: In 12.04 I'm using GLEW 1.6.0. glewTexStorage2D was added
+    in 1.7.0.
+  - FIXED: I added repo ppa:stevenk/ppa and installed 1.7.0.

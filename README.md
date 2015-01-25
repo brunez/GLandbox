@@ -8,6 +8,12 @@ OpenGL project. It is maybe too early even for a quick pull and test. It is neit
 In the examples directory you will find a bunch of examples that make use of the framework. Some of them are based on the 6th edition of the excellent OpenGL SuperBible. Some of these examples are not yet fully functional or present some issues, but they can provide quick pointers on how to use the API.
 
 ## Dependencies
+### GLEW
+
+    libglew-dev
+
+Note: some examples require GLEW 1.7 or higher
+
 ### libpng
 
     libpng12-0 libpng12-dev

@@ -106,6 +106,11 @@ GLFWwindow* init(){
         glfwTerminate();
         return nullptr;
     }
+    std::cout <<  "Using GLEW Version: "  << glewGetString(GLEW_VERSION) << std::endl;
+
+    if(!glewIsSupported("")){
+        std::cout <<  "trouble ahead" << std::endl;
+    }
 
     //Log GL parameters
     gllog::log_gl_params();

@@ -23,7 +23,7 @@ include(ExternalProject)
 
 # Code type
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11")
-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++11 -g -O0 -pthread -I/usr/include/freetype2")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++11 -g -O0 -pthread -I/usr/include/freetype2 -I/usr/include/freetype2/freetype") #Include both freetypes to make sure it compiles with older versions
 
 # Opengl
 #include(FindOpenGL)
