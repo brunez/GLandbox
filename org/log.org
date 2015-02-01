@@ -70,3 +70,18 @@
   - CAUSE: In 12.04 I'm using GLEW 1.6.0. glewTexStorage2D was added
     in 1.7.0.
   - FIXED: I added repo ppa:stevenk/ppa and installed 1.7.0.
+
+* 02/01/2015 
+- PROBLEM: When running light_models:
+ERROR: could not link shader programme GL index 12
+program info log for GL index 12:
+Vertex shader(s) failed to link, fragment shader(s) failed to link.
+Vertex link error: INVALID_OPERATION.
+ERROR: error(#97) No program main found
+fragment link error: INVALID_OPERATION.
+ERROR: error(#97) No program main found
+- CAUSE: index 12 is Gouraud, which I'm not using. The fragment
+  shader is missing, so that's why it fails to compile.
+- FIXED: Commented out compile line and removed it from the shader list
+
+- PROBLEM: Help and parameters are not being drawn in shadow_mapping

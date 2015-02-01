@@ -83,10 +83,11 @@ void LightModels::initialize(){
       
   gland::ShaderDough gDough;    
   gDough.addShaderFromFile("../src/shaders/gouraud_vs.glsl", GL_VERTEX_SHADER);
-  gDough.addShaderFromFile("../src/shaders/gouraud_fs.glsl", GL_FRAGMENT_SHADER);
-  npGouraud_ = shaderManager.cookDough(gDough);
-  shaderPrograms_.push_back(npGouraud_);
-            
+  //TODO gouraud fs does not exist
+  //  gDough.addShaderFromFile("../src/shaders/gouraud_fs.glsl", GL_FRAGMENT_SHADER);
+  //npGouraud_ = shaderManager.cookDough(gDough);
+  //shaderPrograms_.push_back(npGouraud_);
+        
   //Add object
   std::string inputfile = "../res/sphere.obj";
   std::vector<tinyobj::shape_t> shapes;
@@ -108,7 +109,6 @@ void LightModels::initialize(){
   floor->translate(0.0f, -5.0f, 0.0f);
   standardObjects_.push_back(floor);
 
-
   //glEnable (GL_CULL_FACE); // cull face
   glCullFace (GL_BACK); // cull back face
   //glFrontFace (GL_CW); // GL_CCW for counter clock-wise
@@ -116,6 +116,11 @@ void LightModels::initialize(){
   //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
   camera_->lookAt(glm::vec3(0.0f, 0.0f, 10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    std::vector<GLuint>::iterator it;
+    for(it = shaderPrograms_.begin(); it != shaderPrograms_.end(); it++){
+        std::cout << *it << std::endl;
+    }
 
 }
 

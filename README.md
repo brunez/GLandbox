@@ -30,3 +30,6 @@ Note: some examples require GLEW 1.7 or higher
 
     http://www.glfw.org/
 
+### Freetype
+
+    libfreetype6-dev

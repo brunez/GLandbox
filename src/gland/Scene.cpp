@@ -165,7 +165,6 @@ namespace gland{
   }
 
   void Scene::renderParams(){
-
     std::map<std::string, gland::Param>::iterator it;
     float x = -0.98f;
     float y = 0.92f;
@@ -184,7 +183,7 @@ namespace gland{
   void Scene::renderHelp(){
     int width, height;
     glfwGetWindowSize(window_, &width, &height);
-
+    
     float sx = 2.0 / static_cast<float>(width);    
     float sy = 2.0 / static_cast<float>(height);    
 
@@ -238,6 +237,7 @@ namespace gland{
           {x2,     -y2 - h, 0, 1},
           {x2 + w, -y2 - h, 1, 1},
         };
+
         glUseProgram(npParams_);
         glBindVertexArray(nvParams_);
         glBindTexture(GL_TEXTURE_2D, ntParams_);
@@ -248,7 +248,6 @@ namespace gland{
         y += (g->advance.y >> 6) * sy;
       }
   }
-
 
 }
 

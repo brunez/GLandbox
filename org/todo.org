@@ -1,5 +1,5 @@
 
-* TODO Normal mapping int TBN space
+* TODO Normal mapping in TBN space
 * DONE Clean up SMController (its own file, etc)
 * DONE Render text
 * DONE Scene parameters. Boost any?
@@ -8,15 +8,19 @@
 * TODO Think about Body and object for a bit
 ** Integrate lights?
 
-
 * TODO Ambient occlusion
 
 * TODO Ray tracing
 
 * TODO Make performance example (pre baked data vs model matrix multiplication)
 
+
 * TODO Figure out what's wrong with the matrices in cube envmaps
 
 * TODO Figure out what's wrong with the mapping in envmaps
 
 * TODO Figure out what's wrong with the depth buffer shadows when the light moves automatically
+* TODO Controls are jerky
+It moves at variable rate, like in Skyrim. Is it the framerate limit?
+* TODO Params and help not drawing in shadow_mapping
+Maybe related to depth? Active texture? Bound VAO?
